@@ -24,10 +24,15 @@ import HelloWorld from './components/HelloWorld.vue'
   top: 0;
 }
 
+
 .screenview {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   display: grid;
-  z-index: 1;
+  z-index: 10;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  position: absolute;
 }
 </style>

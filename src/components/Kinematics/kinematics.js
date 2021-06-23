@@ -1,7 +1,8 @@
 import Matter from 'matter-js'
 
 /*
-    to be refactored
+    !Alert: refactor the damn thing and optimise the code while your at it
+    TODO: to be refactored
 */
 
 // landing page title section
@@ -53,28 +54,30 @@ export default function landing() {
     });
 
     //mouse control
-    let mouse = Matter.Mouse.create(renderEngine.canvas);
-    let mouseConstraint = Matter.MouseConstraint.create(engine, {
-        mouse: mouse,
-        constraint: {
-            render: {visible: false,}
-        }
-    });
-
-    renderEngine.mouse = mouse;
+    // let mouse = Matter.Mouse.create(renderEngine.canvas);
+    // let mouseConstraint = Matter.MouseConstraint.create(engine, {
+    //     mouse: mouse,
+    //     constraint: {
+    //         render: {visible: false,}
+    //     }
+    // });
+    // renderEngine.mouse = mouse;
 
 
     var launchpad_pos = {
         x: (0.25 * boxprop.width),
-        y: boxprop.height - (0.35 * boxprop.height)
+        y: boxprop.height - (0.40 * boxprop.height)
     }
 
 
     // boundaries
+    // side walls
     var leftWall = Bodies.rectangle(-10, boxprop.height/2, 10, boxprop.height - 30, { isStatic: true });
     leftWall.label = "leftwall";
     var rightWall = Bodies.rectangle(boxprop.width + 10, boxprop.height/2, 10, boxprop.height - 30, { isStatic: true });
     rightWall.label = "rightwall";
+
+    // grounds
     var groundWidth = (0.75 * boxprop.width);         
     //                                  x position              y position                                  width    height      options
     var upperground = Bodies.rectangle(launchpad_pos.x, launchpad_pos.y, groundWidth, 30, {isStatic: true});
@@ -83,12 +86,12 @@ export default function landing() {
     launchpad.label="launchpad";
 
     groundWidth = box.clientWidth - (0.3 * box.clientWidth)
-    var baseground = Bodies.rectangle((0.5 * boxprop.width), boxprop.height, groundWidth, 30, { isStatic: true });
+    var baseground = Bodies.rectangle((0.5 * boxprop.width), boxprop.height - 20, groundWidth, 30, { isStatic: true });
 
     
     // add all of the bodies to the world
     var world = engine.world;
-    var boundaries = Composite.add(world, [ baseground, upperground, launchpad, leftWall, rightWall, mouseConstraint]);
+    var boundaries = Composite.add(world, [ baseground, upperground, launchpad, leftWall, rightWall,]);
 
     // start the rendering engine
     Render.run(renderEngine);
@@ -106,8 +109,10 @@ export default function landing() {
 
     //screen size
     if (box.clientWidth <= 1200) {
-        force.x = 0.4;
-        force.y = -0.4;
+        force.x = Math.random() * (0.7 - 0.4) + 0.4;
+        // force.y = -0.4;
+        force.y = Math.random() * (0.7 - 0.2) + 0.2;
+
     }
 
 
@@ -115,6 +120,17 @@ export default function landing() {
     function move(circle) {
         Matter.Body.applyForce(circle, {x: circle.position.x, y: circle.position.y}, force);
     }
+
+    //run every 5 seconds
+    setInterval(function(e) {
+        // random 
+        // Math.floor(Math.random() * (max - min)) + min
+        console.log("Create");
+        var randSize = Math.floor(Math.random() * (60 - 40)) + 40;
+        var newcircle = Bodies.circle(randSize + 10, launchpad_pos.y - randSize, randSize, {restitution: 0.5});
+        Matter.World.addBody(world, newcircle);
+        move(newcircle);
+    }, 3000);
 
 
     /*
@@ -128,17 +144,6 @@ export default function landing() {
             }
         }
     });
-
-    //run every 5 seconds
-    setInterval(function(e) {
-        // random 
-        // Math.floor(Math.random() * (max - min)) + min
-        console.log("Create");
-        var randSize = Math.floor(Math.random() * (60 - 40)) + 40;
-        var newcircle = Bodies.circle(randSize + 10, launchpad_pos.y - randSize, randSize, {restitution: 0.5});
-        Matter.World.addBody(world, newcircle);
-        move(newcircle);
-    }, 3000);
 
 
     //detect collisions

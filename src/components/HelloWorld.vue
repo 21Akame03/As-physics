@@ -1,10 +1,12 @@
 <template>
+  <Navbar />
   <Kinematics />
 </template>
 
 <script setup>
-import { defineComponent, defineProps, reactive } from 'vue'
-import Kinematics from './Kinematics/Kinematics.vue'
+import { defineComponent, defineProps, reactive } from 'vue';
+import Navbar from './Reusable/Navbar.vue';
+import Kinematics from './Kinematics/Kinematics.vue';
 
 defineComponent({
   Kinematics
@@ -12,7 +14,5 @@ defineComponent({
 </script>
 
 <style scoped>
-a {
-  color: #42b983;
-}
+
 </style>
