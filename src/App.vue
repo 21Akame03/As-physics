@@ -23,7 +23,26 @@ import HelloWorld from './components/HelloWorld.vue'
   left: 0;
   top: 0;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #222;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 .screenview {
   height: 100%;
@@ -33,6 +52,5 @@ import HelloWorld from './components/HelloWorld.vue'
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
-  position: absolute;
 }
 </style>

@@ -2,12 +2,12 @@
     <!-- *Important 
         this will be the template for all pages
     -->
-
+    
     <!-- Kinematics -->
     <!-- landing -->
-    <section class="screenview">
+    <div class="screenview relative">
         <!-- fun design and test -->
-        <div id="landing-bg" class="absolute w-full h-full">
+        <div id="landing-bg" class="absolute w-screen h-screen">
         </div>
 
         <!-- title -->
@@ -15,22 +15,54 @@
             Kinematics
         </h1>
 
+
         <!-- routing -->
-        <section class="relative w-screen h-screen top-full grid-cols-8 gap-2" id="main-content">
+        <section class="relative h-screen top-full main-content text-white">
             
-            <div class="h-96 w-96 bg-gray-600 col-span-3">
-                
+            <!-- This is a canvas for drawings or matterjs or other things -->
+            <div class="relative temp-columns" id="speed">
 
             </div>
 
             <!-- explain -->
-            <a class="w-3/5 h-2/3 bg-red-500 col-span-4">
-                explaination part
-            </a>
+            <div class="temp-columns px-3" id="speedaccel" >
+
+                <h2 class="text-2xl">
+                    Speed, Velocity and Accelration
+                </h2>
+                
+                <p> 
+                    Snippet management is a text editor feature popular among software developers or others who routinely require content from a catalogue of repeatedly entered text (such as with source code or boilerplate). Often this feature is justified because the content varies only slightly (or not at all) each time it is entered.
+
+Snippets in text editors
+Text editors that include this feature ordinarily provide a mechanism to manage the catalogue, and separate "snippets" in the same manner that the text editor and operating system allow management of separate files. These basic management abilities include operations such as viewing, adding, editing, deleting, sorting, filtering, grouping, renaming, and storing snippets in a repository, catalogue, or database. Some editors provide a macro ability to snippets allowing function prototypes and variable control structures to be generated based on a standard template.
+
+Snippets in IDEs
+Some programmer's applications such as Eclipse, NetBeans, and Microsoft's Visual Studio and other IDEs include built-in parts of structure for ease of coding.
+
+Other applications such as Macromedia Dreamweaver make use of these code snippets as well for Web development.
+
+Snippets in JIT compilers
+Just-in-time (JIT) compilers can "splice together" pre-compiled sections of code as longer object code/machine code segments. This reduces interpret time significantly and simultaneously speeds execution.
+                </p>
+
+                <p>
+                    adjsklllllllllllllllllllllllllllllllllllllll
+                    sadsssssssssssssssssssssssssssssssssf
+                    af
+                    fsdfaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    ffffffffffffffffffffffffffffffffffffffffffffffffffffff
+                    fddddddddddddddddddddddddddddddddddddd
+                    dddddddddddddddddddddddddddd
+                </p>
+            </div>
             
         </section>
+    </div>
 
-    </section>
+    
+
+
 </template>
 
 <script>
@@ -39,41 +71,53 @@ import landing from './kinematics'
 
 export default {
     setup() {
-
         // run the engines
         onMounted(() => {
             landing();
         });
-        
     },
 }
 </script>
 
-<style scoped>
 
-    /* width */
+<style scoped>
+/* /* width
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
-}
+} */
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background: #222;
-}
+} */
 
-/* Handle */
-::-webkit-scrollbar-thumb {
+/* Handle
+/* ::-webkit-scrollbar-thumb {
   background: #222;
-}
+} */ 
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
   background: #555;
+} */
+
+.main-content {
+    background: rgba(30, 58, 138);
+    background: linear-gradient(0deg, rgba(30, 58, 138) 30%, rgba(34,34,34,1) 70%);
+    display: grid;
+    width: calc(100%);
+
+    grid-template-columns: 50% 50%;
 }
 
-    #main-content {
-        background: rgba(30, 58, 138);
-        background: linear-gradient(0deg, rgba(30, 58, 138) 5%, rgba(34,34,34,1) 100%);
-    }
+.temp-columns {
+    padding-top: 10%;
+}
+
+#speedaccel {
+    display: grid;
+    grid-template-rows: 10% 30% 30% 30%;
+}
+
 </style>
